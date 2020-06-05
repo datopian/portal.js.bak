@@ -1,6 +1,17 @@
 import Head from 'next/head'
+import { GetStaticProps } from 'next'
+import Resource from '../../../../fixtures/index';
 
-export default function Showcase() {
+export const getStaticProps: GetStaticProps = async () => {
+  const allData = Resource
+  return {
+    props: {
+      allData
+    }
+  }
+}
+
+export default function Showcase({ allData }) {
   return (
     <div className="container mx-auto">
       <Head>
@@ -8,9 +19,8 @@ export default function Showcase() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="my-16">
-      <div id="datapackage-view-{{view.id}}" className="react-me tables"></div>
-      <p className="notice">
-        This is a preview version. There might be more data in the original version.
+        <p className="notice">
+          This is a preview version. There might be more data in the original version.
       </p>
         <div className="my-16">
           <h2 className="text-3xl pb-2" id="data">Remuneración octubre 2017</h2>
@@ -25,84 +35,16 @@ export default function Showcase() {
               </tr>
             </thead>
             <tbody>
-              <tr className="bg-gray-200 text-sm border">
-                <td className="px-5 py-4 border font-bold">
-                  No.
-                </td>
-                <td className="px-5 py-4 border">
-                  1
-                </td>
-                <td className="px-5 py-4 border">
-                  any
-                </td>
-                <td className="px-5 py-4 border">
-                </td>
-              </tr>
-              <tr className="text-sm border">
-                <td className="px-5 py-4 border font-bold">
-                  Puesto institucional
-                </td>
-                <td className="px-5 py-4 border">
-                  2
-                </td>
-                <td className="px-5 py-4 border">
-                  string
-                </td>
-                <td className="px-5 py-4 border">
-                </td>
-              </tr>
-              <tr className="bg-gray-200 text-sm border">
-                <td className="px-5 py-4 border font-bold">
-                  Régimen laboral al que pertenece	
-                </td>
-                <td className="px-5 py-4 border">
-                  3
-                </td>
-                <td className="px-5 py-4 border">
-                  string
-                </td>
-                <td className="px-5 py-4 border">
-                </td>
-              </tr>
-              <tr className="text-sm border">
-                <td className="px-5 py-4 border font-bold">
-                  Número de partida presupuestaria
-                </td>
-                <td className="px-5 py-4 border">
-                  4
-                </td>
-                <td className="px-5 py-4 border">
-                  string
-                </td>
-                <td className="px-5 py-4 border">
-                </td>
-              </tr>
-              <tr className="bg-gray-200 text-sm border">
-                <td className="px-5 py-4 border font-bold">
-                  Grado jerárquico o escala al que pertenece el puesto	
-                </td>
-                <td className="px-5 py-4 border">
-                  5
-                </td>
-                <td className="px-5 py-4 border">
-                  any
-                </td>
-                <td className="px-5 py-4 border">
-                </td>
-              </tr>
-              <tr className="text-sm border">
-                <td className="px-5 py-4 border font-bold">
-                  Remuneración mensual unificacada	
-                </td>
-                <td className="px-5 py-4 border">
-                  6
-                </td>
-                <td className="px-5 py-4 border">
-                  any
-                </td>
-                <td className="px-5 py-4 border">
-                </td>
-              </tr>
+              {allData.map((data, index) => {
+                return (
+                  <tr key={index} className="text-sm border">
+                    <td className="px-5 py-4 border font-bold">{data.name}</td>
+                    <td className="px-5 py-4 border">{data.position}</td>
+                    <td className="px-5 py-4 border">{data.format}</td>
+                    <td className="px-5 py-4 border">{data.description}</td>
+                  </tr>
+                )
+              })}
             </tbody>
           </table>
           <a href="/@myorg/myDataset" className="text-orange-600 underline">Go back</a>
