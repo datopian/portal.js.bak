@@ -3,10 +3,12 @@ import { GetStaticProps } from 'next'
 import Resource from '../../../../fixtures/index';
 
 export const getStaticProps: GetStaticProps = async () => {
-  const allData = Resource
-  return {
-    props: {
-      allData
+  if (process.env.NODE_ENV === 'development') {
+    const allData = Resource
+    return {
+      props: {
+        allData
+      }
     }
   }
 }
