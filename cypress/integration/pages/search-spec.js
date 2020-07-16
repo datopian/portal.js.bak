@@ -1,13 +1,13 @@
-/// <reference types="cypress" />
-export {};
-
 describe('Test Search Page', () => {
   beforeEach(() => {
     cy.visit('/search');
   });
+
   it('has a search form', () => {
-    cy.get('form').type('world population').should('contain', 'Search');
+    cy.contains('form');
+    cy.contains('Search');
   });
+
   it('should return a search result', () => {
     cy.get('form').find('[type="text"]').type('world population');
     cy.get('form').submit();
