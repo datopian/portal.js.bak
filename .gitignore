@@ -29,3 +29,7 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
+
+# Packages Node Modules
+packages/portal/node_modules
+packages/create-portal-app/node_modules
