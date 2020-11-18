@@ -2,7 +2,10 @@
 import Link from 'next/link';
 import { useState } from 'react';
 
-const Nav: React.FC = () => {
+type Props = {
+  isLogin: any;
+};
+const Nav: React.FC<Props> = ({ isLogin }) => {
   const [open, setOpen] = useState(false);
 
   const handleClick = (event) => {
@@ -57,16 +60,20 @@ const Nav: React.FC = () => {
         >
           GitHub
         </a> */}
-        <Link href="/login">
-          <a className="nline-block text-tiny mr-4 px-4 py-2 leading-none border rounded text-primary bg-success-background border-black hover:border-gray-700 hover:text-gray-700 hover:bg-white mt-4 lg:mt-0">
-            Login
-          </a>
-        </Link>
-        <Link href="/search">
-          <a className="nline-block text-tiny px-4 py-2 leading-none border rounded text-primary bg-primary-background border-black hover:border-gray-700 hover:text-gray-700 hover:bg-white mt-4 lg:mt-0">
-            Signup
-          </a>
-        </Link>
+        {isLogin && (
+          <Link href="/login">
+            <a className="nline-block text-tiny mr-4 px-4 py-2 leading-none border rounded text-primary bg-success-background border-black hover:border-gray-700 hover:text-gray-700 hover:bg-white mt-4 lg:mt-0">
+              Login
+            </a>
+          </Link>
+        )}
+        {isLogin && (
+          <Link href="/search">
+            <a className="nline-block text-tiny px-4 py-2 leading-none border rounded text-primary bg-primary-background border-black hover:border-gray-700 hover:text-gray-700 hover:bg-white mt-4 lg:mt-0">
+              Signup
+            </a>
+          </Link>
+        )}
       </div>
     </nav>
   );
