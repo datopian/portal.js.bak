@@ -9,20 +9,19 @@ import { SEARCH_QUERY } from '../graphql/queries';
 const Home: React.FC = () => (
   <div className="container mx-auto">
     <Head>
-      <title>Portal</title>
+      <title>GIFT-Portal</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <Nav />
     <section className="flex justify-center items-center flex-col mt-8 mx-4 lg:flex-row">
       <div>
         <h1 className="text-4xl mb-3 font-thin">
-          Find, Share and Publish <br /> Quality Data with{' '}
-          <span className="text-orange-500">Datahub</span>
+          Find, Share and Publish <br /> Quality Data on{' '}
+          <span className="text-orange-500">GIFT</span>
         </h1>
         <p className="text-md font-light mb-3 w-4/5">
-          At Datahub, we have over thousands of datasets for free and a Premium
-          Data Service for additional or customised data with guaranteed
-          updates.
+          At Gift, we have open and free dataset that covers fiscal
+          transperency around the world
         </p>
         <Form />
       </div>

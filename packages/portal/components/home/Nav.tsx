@@ -31,17 +31,17 @@ const Nav: React.FC = () => {
         </button>
       </div>
       <div className={`${open ? `block` : `hidden`} lg:block`}>
-        <Link href="/blog">
+        {/* <Link href="/blog">
           <a className="block mt-4 lg:inline-block lg:mt-0 active:bg-primary-background text-gray-700 hover:text-black mr-6">
             Blog
           </a>
-        </Link>
-        <Link href="/search">
+        </Link> */}
+        {/* <Link href="/search">
           <a className="block mt-4 lg:inline-block lg:mt-0 text-gray-700 hover:text-black mr-6">
             Search
           </a>
-        </Link>
-        <a
+        </Link> */}
+        {/* <a
           href="http://tech.datopian.com/frontend/"
           className="block mt-4 lg:inline-block lg:mt-0 text-gray-700 hover:text-black mr-6"
           target="_blank"
@@ -56,7 +56,7 @@ const Nav: React.FC = () => {
           rel="noreferrer"
         >
           GitHub
-        </a>
+        </a> */}
       </div>
     </nav>
   );
