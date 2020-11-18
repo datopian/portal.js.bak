@@ -7,12 +7,16 @@ import About from '../../../components/dataset/About';
 import Org from '../../../components/dataset/Org';
 import Resources from '../../../components/dataset/Resources';
 import { GET_DATASET_QUERY } from '../../../graphql/queries';
+import dataPackages from '../../../mocks/data_package';
 
 const Dataset: React.FC<{ variables: any }> = ({ variables }) => {
-  const { data, loading } = useQuery(GET_DATASET_QUERY, { variables });
+  const index = variables.split('+')[1];
+  console.log(variables);
+  const result = dataPackages[parseInt(index)];
+  // const { data, loading } = useQuery(GET_DATASET_QUERY, { variables });
 
-  if (loading) return <div>Loading</div>;
-  const { result } = data.dataset;
+  // if (loading) return <div>Loading</div>;
+  // const { result } = data.dataset;
 
   return (
     <>
@@ -20,34 +24,34 @@ const Dataset: React.FC<{ variables: any }> = ({ variables }) => {
         <title>Portal | {result.title || result.name}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Nav />
+      <Nav isLogin={true} />
       <main className="p-6">
         <h1 className="text-3xl font-semibold text-primary mb-2">
           {result.title || result.name}
         </h1>
-        <Org variables={variables} />
-        <About variables={variables} />
-        <Resources variables={variables} />
+        <Org variables={result} />
+        <About variables={result} />
+        <Resources variables={result} />
       </main>
     </>
   );
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const apolloClient = initializeApollo();
-  const variables = {
-    id: context.query.dataset,
-  };
-
-  await apolloClient.query({
-    query: GET_DATASET_QUERY,
-    variables,
-  });
+  // console.log("ddddddddd",context.query.dataset);
+  // const apolloClient = initializeApollo();
+  // const variables = {
+  //   id: context.query.dataset,
+  // };
+  // await apolloClient.query({
+  //   query: GET_DATASET_QUERY,
+  //   variables,
+  // });
 
   return {
     props: {
-      initialApolloState: apolloClient.cache.extract(),
-      variables,
+      // initialApolloState: apolloClient.cache.extract(),
+      variables: context.query.dataset,
     },
   };
 };

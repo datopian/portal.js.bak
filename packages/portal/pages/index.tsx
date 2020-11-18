@@ -6,13 +6,17 @@ import Recent from '../components/home/Recent';
 import Form from '../components/search/Form';
 import { SEARCH_QUERY } from '../graphql/queries';
 
-const Home: React.FC = () => (
+type Props = {
+  isLogin: any;
+};
+
+const Home: React.FC<Props> = ({ isLogin }) => (
   <div className="container mx-auto">
     <Head>
       <title>GIFT-Portal</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
-    <Nav />
+    <Nav isLogin={isLogin} />
     <section className="flex justify-center items-center flex-col mt-8 mx-4 lg:flex-row">
       <div>
         <h1 className="text-4xl mb-3 font-thin">
@@ -35,7 +39,10 @@ const Home: React.FC = () => (
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const apolloClient = initializeApollo();
-  console.log(query);
+  let isLogin = true;
+  if ('password' in query) {
+    isLogin = false;
+  }
   await apolloClient.query({
     query: SEARCH_QUERY,
     variables: {
@@ -47,6 +54,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   return {
     props: {
       initialApolloState: apolloClient.cache.extract(),
+      isLogin: isLogin,
     },
   };
 };

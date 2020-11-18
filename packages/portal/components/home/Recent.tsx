@@ -52,7 +52,7 @@ const Recent: React.FC = () => {
                 data_package.organization
                   ? data_package.organization.name
                   : 'dataset'
-              }/${data_package.name}`}
+              }/${data_package.name}+${index}`}
             >
               <a className="pt-3 flex justify-end text-orange-500">
                 View Dataset
