@@ -1,51 +1,35 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 // import { useQuery } from '@apollo/react-hooks';
 // import { ErrorMessage } from '../_shared';
 // import { SEARCH_QUERY } from '../../graphql/queries';
+import dataPackages from '../../mocks/data_package'; //Manually import data for now
 
 const Recent: React.FC = () => {
-  // const { loading, error, data } = useQuery(SEARCH_QUERY, {
-  //   variables: {
-  //     sort: 'metadata_created desc',
-  //     rows: 3,
-  //   },
-  //   // Setting this value to true will make the component rerender when
-  //   // the "networkStatus" changes, so we are able to know if it is fetching
-  //   // more data
-  //   notifyOnNetworkStatusChange: true,
-  // });
-  // if (error) return <ErrorMessage message="Error loading search results." />;
-  // if (loading) return <div>Loading</div>;
-  const [dataPackages, setDataPackages] = useState([]);
+  // const gift_repo_path = 'https://api.github.com/users/gift-data/repos';
+  // const [dataPackages, setDataPackages] = useState([]);
 
-  const gift_repo_path = 'https://api.github.com/users/gift-data/repos';
+  // //TODO: Add authentication to increase github API call limit
+  // const get_data_packages = async () => {
+  //   const response = await fetch(gift_repo_path);
+  //   const repos = await response.json();
+  //   const packages = [];
 
-  const get_repos = async () => {
-    const response = await fetch(gift_repo_path);
-    const data_repos = await response.json();
-    return data_repos;
-  };
+  //   repos.map(async (data_repo) => {
+  //     const response = await fetch(
+  //       `https://raw.githubusercontent.com/gift-data/${data_repo.name}/master/datapackage.json`
+  //     );
+  //     const data_package = await response.json();
 
-  const get_data_packages = async () => {
-    const repos = await get_repos();
-    const packages = [];
+  //     packages.push(data_package);
+  //     setDataPackages(packages);
+  //   });
+  // };
 
-    repos.map(async (data_repo) => {
-      const response = await fetch(
-        `https://raw.githubusercontent.com/gift-data/${data_repo.name}/master/datapackage.json`
-      );
-      const data_package = await response.json();
-
-      packages.push(data_package);
-      setDataPackages(packages);
-    });
-  };
-
-  useEffect(() => {
-    get_data_packages();
-  }, []);
+  // useEffect(() => {
+  //   get_data_packages();
+  // }, []);
 
   // const { result } = data.search;
 
