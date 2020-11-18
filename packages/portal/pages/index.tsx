@@ -34,9 +34,9 @@ const Home: React.FC = () => (
   </div>
 );
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const apolloClient = initializeApollo();
-
+  console.log(query);
   await apolloClient.query({
     query: SEARCH_QUERY,
     variables: {
