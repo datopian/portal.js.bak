@@ -35,19 +35,19 @@ const columns = [
 ];
 
 const About: React.FC<{ variables: any }> = ({ variables }) => {
-  const { loading, error, data } = useQuery(GET_DATAPACKAGE_QUERY, {
-    variables,
-    // Setting this value to true will make the component rerender when
-    // the "networkStatus" changes, so we are able to know if it is fetching
-    // more data
-    notifyOnNetworkStatusChange: true,
-  });
+  // const { loading, error, data } = useQuery(GET_DATAPACKAGE_QUERY, {
+  //   variables,
+  //   // Setting this value to true will make the component rerender when
+  //   // the "networkStatus" changes, so we are able to know if it is fetching
+  //   // more data
+  //   notifyOnNetworkStatusChange: true,
+  // });
 
-  if (error) return <ErrorMessage message="Error loading dataset." />;
-  if (loading) return <div>Loading</div>;
+  // if (error) return <ErrorMessage message="Error loading dataset." />;
+  // if (loading) return <div>Loading</div>;
 
-  const { result } = data.dataset;
-  return <Table columns={columns} data={[result]} />;
+  // const { result } = data.dataset;
+  return <Table columns={columns} data={[variables]} />;
 };
 
 export default About;
