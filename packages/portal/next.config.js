@@ -1,4 +1,5 @@
 const { PHASE_DEVELOPMENT_SERVER } = require('next/constants');
+require('dotenv').config();
 
 module.exports = (phase, { defaultConfig }) => {
   const dms = process.env.DMS;
