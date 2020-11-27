@@ -1,9 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import Link from 'next/link';
 import { useState } from 'react';
+import { useFetchUser } from '../../utils/users';
 
 const Nav: React.FC = () => {
   const [open, setOpen] = useState(false);
+  const { user, loading } = useFetchUser();
 
   const handleClick = (event) => {
     event.preventDefault();
@@ -41,6 +43,20 @@ const Nav: React.FC = () => {
             Search
           </a>
         </Link>
+        {!user && (
+          <Link href="/api/login">
+            <a className="block mt-4 lg:inline-block lg:mt-0 text-gray-700 hover:text-black mr-6">
+              Login
+            </a>
+          </Link>
+        )}
+        {user && (
+          <Link href="/api/logout">
+            <a className="block mt-4 lg:inline-block lg:mt-0 text-gray-700 hover:text-black mr-6">
+              Logout
+            </a>
+          </Link>
+        )}
         <a
           href="http://tech.datopian.com/frontend/"
           className="block mt-4 lg:inline-block lg:mt-0 text-gray-700 hover:text-black mr-6"
