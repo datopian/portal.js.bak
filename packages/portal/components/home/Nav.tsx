@@ -5,7 +5,7 @@ import { useFetchUser } from '../../utils/users';
 
 const Nav: React.FC = () => {
   const [open, setOpen] = useState(false);
-  const { user, loading } = useFetchUser();
+  const { user } = useFetchUser();
 
   const handleClick = (event) => {
     event.preventDefault();
