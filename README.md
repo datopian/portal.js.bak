@@ -1,73 +1,51 @@
-An experiment in "showing" datasets starting with just one (and probably coming to many i.e. a portal later).
+<h1 align="center">
 
-Live demo: http://portal-six.vercel.app/
+🌀 Portal.JS<br/>
+The javascript framework for<br/>
+data portals
 
-Run it locally:
+</h1>
+
+🌀 `Portal.JS` is a framework for previewing, sharing and publishing datasets. It is useful for building data(set) showcases and data-driven micro web apps
+
+Live DEMO: https://portal-git-ref-portal-exp-datopian1.vercel.app/
+
+## Features
+* Show (preview) data locally. 
+* Elegant presentation
+* Shows the data in a table etc (searchable / filterable)
+* Supports other data formats e.g. json, xlsx etc
+* Show graphs
+* Show Data summary
+* Provides a seamless api to your dataset 
+
+
+
+### For developers
+
+Clone the repo:
+```
+git clone https://github.com/datopian/portal.js.git
+cd portal.js
+yarn
+```
+Run it in development mode locally:
 
 ```
-npm run dev
+yarn dev
+```
+Build the app
+```
+yarn build
 ```
 
-Future
-
+Run tests
 ```
-data show [{path to dataset}]
-```
-
-# Vision
-
-I have a dataset `my-data`
-
-```bash=
-README.md
-data.csv
-## descriptor is optional (we infer if not there) 
-# datapackage.json
+yarn test
 ```
 
-## Show (preview) data locally
+### Using the Portal CLI app
+The [portal cli app](https://github.com/datopian/portal-cli-app) is a simple and elegant tool that works with portal.js. It provides the CLI commands for displaying and publishing datasets.
 
-I can do ...
+Visit the [repo](https://github.com/datopian/portal-cli-app) for instructions on how to install and use it. 
 
-```bash=
-cd my-dataset
-portal [show]
-```
-
-And I get a nice dataset page at e.g. `http://localhost:3000`
-
-![](https://i.imgur.com/KSEtNF1.png)
-
-## Deploy it online
-
-Then i can deploy it online
-
-```
-portal deploy
-```
-
-Gives me a url like ...
-
-```
-myusername-my-dataset.datahub.io
-```
-
-# Analysis
-
-## `portal`
-
-```
-portal PATH
-```
-
-How it works:
-
-```bash
-cd ~/.portal/
-git clone ...
-cd portal-app
-export DATASET=PATH
-next dev
-
-# watch and reload next ... (perhaps a hack by writing something into next folder to trigger reload)
-```
