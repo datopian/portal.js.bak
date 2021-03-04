@@ -2,13 +2,12 @@
 
 # dependencies
 /node_modules
-/examples/catalog/portal/node_modules
+/portal-cli-app/node_modules
 /.pnp
 .pnp.js
 
 # testing
 /coverage
-/cypress/videos
 
 # next.js
 /.next/
@@ -19,6 +18,7 @@
 
 # misc
 .DS_Store
+*.pem
 
 # debug
 npm-debug.log*
@@ -31,10 +31,6 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
-pages/App.css
-
-# Monorepo packages Node Modules
-packages/portal/node_modules
-packages/create-portal-app/node_modules
-packages/portal/.next
-packages/portal/.env
+# vercel
+.vercel
+tests/pages/__snapshots__/index.test.js.snap
