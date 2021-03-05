@@ -1,30 +1,22 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 module.exports = {
+  purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+  darkMode: false, // or 'media' or 'class'
   theme: {
-    fontSize: {
-      tiny: 'var(--font-size-small)',
-      md: 'var(--font-size-medium)',
-      lg: 'var(--font-size-large)',
+    container: {
+      center: true,
     },
     extend: {
-      colors: {
-        primary: 'var(--color-primary)',
-        secondary: 'var(--color-secondary)',
-        negative: 'var(--color-negative)',
-        positive: 'var(--color-positive)',
-        'primary-background': 'var(--background-primary)',
-        'sec-background': 'var(--background-sec)',
-        'primary-text': 'var(--color-text-primary)',
-      },
+      fontFamily: {
+        mono: ["Inconsolata", ...defaultTheme.fontFamily.mono]
+      }
     },
-    backgroundColor: (theme) => ({
-      ...theme('colors'),
-    }),
   },
   variants: {
-    backgroundColor: ['active'],
+    extend: {},
   },
-  plugins: ['font-size'],
-  corePlugins: {
-    fontSize: true,
-  },
-};
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
+}
